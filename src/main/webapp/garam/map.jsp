@@ -14,7 +14,7 @@
 
 <body class="page06">
     <div class="busmap">
-        <div class="back"><a href="mypage.html"><img src="./img/ico06.png"></a></div> <!--뒤로가기버튼:내정보로 이동-->
+        <div class="back"><a href="mypage.jsp"><img src="./img/ico06.png"></a></div> <!--뒤로가기버튼:내정보로 이동-->
     </div>
 </body>
 </html>

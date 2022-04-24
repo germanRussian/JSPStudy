@@ -20,11 +20,11 @@
         <div class="a01">
             <div><span>ID</span><input type="text"></div>
             <div><span>PW</span><input type="text"></div>
-            <button><a href="mypage.html">Log in</a></button>
+            <button><a href="mypage.jsp">Log in</a></button>
         </div>
 
         <div class="cscenter">
-            <a href="join01.html">회원가입</a>
+            <a href="join01.jsp">회원가입</a>
         </div>
     </div>
 </body>

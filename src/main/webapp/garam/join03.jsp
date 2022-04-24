@@ -20,7 +20,7 @@
             <span>가람 스쿨버스 가입이 완료되었습니다.</span>
         </div>
 
-        <button><a href="login.html">로그인 하러가기</a></button>
+        <button><a href="login.jsp">로그인 하러가기</a></button>
 
         <div class="cscenter">
             가람광광여행사 고객센터<br><span>054-251-3800</span>

@@ -15,7 +15,7 @@
 <body class="page05 tC">
     <div class="mXY">
         <div class="qrcode">
-            <div class="qrimg" style="padding:0"><img src="qrcodeImg.html" style="width:100%"></div>
+            <div class="qrimg" style="padding:0"><img src="qrcodeImg.jsp" style="width:100%"></div>
             <span>잔여횟수</span>
             <div class="count"><b>4</b>회</div>
         </div>
@@ -24,9 +24,9 @@
     
     <div class="FAB">
         <ul class="ulFl">
-            <li><a href="mypage.html"><img src="./img/ico01.png"><p>내정보</p></a></li>
-            <li class="on"><a href="02_bus.html"><img src="./img/ico02_on.png"><p>버스탑승</p></a></li>
-            <li><a href="list.html"><img src="./img/ico03.png"><p>이용내역</p></a></li>
+            <li><a href="mypage.jsp"><img src="./img/ico01.png"><p>내정보</p></a></li>
+            <li class="on"><a href="02_bus.jsp"><img src="./img/ico02_on.png"><p>버스탑승</p></a></li>
+            <li><a href="list.jsp"><img src="./img/ico03.png"><p>이용내역</p></a></li>
         </ul>
     </div>
 </body>

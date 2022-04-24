@@ -4,7 +4,7 @@
 
 
 <?php
-    include_once "./libs/phpqrcode/qrlib.html";
+    include_once "./libs/phpqrcode/qrlib.jsp";
        
     ob_start("colback");
 

@@ -54,31 +54,31 @@
         </div>
 
         <div class="b02 pd16">
-            <a href="bus.html" class="mb16 qrbtn">
+            <a href="bus.jsp" class="mb16 qrbtn">
                 <img src="./img/img01.png">QR 승하차 체크하기<img src="./img/ico_arrow.png" class="fR">
             </a>
             <div class="mb16">
                 <img src="./img/img02.png">잔여 이용 횟수
                 <span class="fR"><b>4</b>회</span>
             </div>
-            <a href="map.html" class="mb16">
+            <a href="map.jsp" class="mb16">
                 <img src="./img/img03.png">실시간 버스 위치<img src="./img/ico_arrow2.png" class="fR">
             </a>
-            <a href="line.html">
+            <a href="line.jsp">
                 <img src="./img/img05.png">버스 노선 안내<img src="./img/ico_arrow2.png" class="fR">
             </a>
         </div>
         
 
         <div class="cscenter">
-            가람광광여행사 고객센터 <span>054-251-3800</span><br><a href="privacy.html">[개인정보처리방침]</a><br>
+            가람광광여행사 고객센터 <span>054-251-3800</span><br><a href="privacy.jsp">[개인정보처리방침]</a><br>
         </div>
 
     <div class="FAB">
         <ul class="ulFl">
-            <li class="on"><a href="mypage.html"><img src="./img/ico01_on.png"><p>내정보</p></a></li>
-            <li><a href="bus.html"><img src="./img/ico02.png"><p>버스탑승</p></a></li>
-            <li><a href="list.html"><img src="./img/ico03.png"><p>이용내역</p></a></li>
+            <li class="on"><a href="mypage.jsp"><img src="./img/ico01_on.png"><p>내정보</p></a></li>
+            <li><a href="bus.jsp"><img src="./img/ico02.png"><p>버스탑승</p></a></li>
+            <li><a href="list.jsp"><img src="./img/ico03.png"><p>이용내역</p></a></li>
         </ul>
     </div>
 </body>
