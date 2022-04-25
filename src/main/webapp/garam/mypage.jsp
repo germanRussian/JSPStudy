@@ -1,8 +1,13 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-
+    
+    <!-- 잘못된 경로 출입 방지 / 모든 페이지에 작성되어야한다. -->
+<%
+if(session.getAttribute("uid") == null){
+	response.sendRedirect("login.jsp");
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,11 +21,12 @@
         <div class="b01 pd16">
             <div class="oH w100">
                 <div class="name fL">
-                    <b>김영희</b>님 안녕하세요!
+                    <b><%=session.getAttribute("sessName") %></b>님 안녕하세요!
                 </div>
                 <div class="fR">
                     <button>내정보수정</button>
-                    <button class="blue">완료</button>
+                    <!-- 로그아웃시 세션 다 제거 -->
+                    <a href ="logout.jsp" class="blue"> 로그아웃</a>
                     <!--평소에는 내정보수정 버튼만 보이고, 수정 중일때만 완료버튼 표시-->
                 </div>
             </div>  
@@ -28,15 +34,15 @@
             <table>
                 <tr>
                     <td>이름</td>
-                    <td>김영희</td>
+                    <td><%=session.getAttribute("sessName") %></td>
                 </tr>
                 <tr>
                     <td>휴대폰 번호</td>
-                    <td>010-6371-0370</td>
+                    <td><%=session.getAttribute("sessId") %></td>
                 </tr>
                 <tr>
                     <td>학교</td>
-                    <td>포항고등학교</td>
+                    <td><%=session.getAttribute("sessSchoolName") %></td>
                 </tr>
                 <tr>
                     <td>학년반</td>

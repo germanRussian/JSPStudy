@@ -38,9 +38,10 @@ String url = "jdbc:mysql://localhost:3306/garam?characterEncoding=UTF-8&serverTi
 String user = "root";
 String password = "smart";
 StringBuffer sql = new StringBuffer();
-StringBuffer qry = new StringBuffer();
-qry.append(" INSERT INTO g_member (uname, schoolname, gradeclass, uid, upw, route, boardingplace, joindate)");
-qry.append(" VALUES (?, ?, ?, ?, ?, ?, ?, now()) ");
+sql.append(" INSERT INTO g_member (uname, schoolname, gradeclass, uid, upw, route, boardingplace, joindate)");
+sql.append(" VALUES (?, ?, ?, ?, ?, ?, ?, now()) ");
+
+
 
 
 Connection conn = null;
@@ -66,7 +67,7 @@ try {
 	res = stmt.executeUpdate();
 
 } catch (Exception e) {
-
+e.getLocalizedMessage();
 } finally {
 	//닫기
 	if (stmt != null)
