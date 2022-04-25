@@ -25,7 +25,7 @@ if(session.getAttribute("uid") == null){
                 </div>
                 <div class="fR">
                     <button>내정보수정</button>
-                    <!-- 로그아웃시 세션 다 제거 -->
+                    <!-- 로그아웃시 세션 다 제거 / a 태그를 활용한다. -->
                     <a href ="logout.jsp" class="blue"> 로그아웃</a>
                     <!--평소에는 내정보수정 버튼만 보이고, 수정 중일때만 완료버튼 표시-->
                 </div>
