@@ -12,6 +12,8 @@ gradeclass: 403호
 upw: 123
 route: B노선
 boardingplace: B장소
+
+request는 한페이지 밖에 못 던진다.
 */
 
 request.setCharacterEncoding("UTF-8");//데이터 한글 깨짐 방지

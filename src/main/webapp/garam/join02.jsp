@@ -69,7 +69,7 @@ if ((agree == null || !agree.equals("Y")) || method.equals("GET")) {
 				<h4>비밀번호 확인</h4>
 				<input type="password" maxlength='12' id="upw2">
 			</div>
-2
+
 			<div>
 				<h4>노선</h4>
 				<div class="sltbox">
