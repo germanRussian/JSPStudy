@@ -54,8 +54,8 @@ if ((agree == null || !agree.equals("Y")) || method.equals("GET")) {
 					<span>(※휴대폰 번호가 ID로 설정됩니다.)</span>
 				</div>
 				<div class="pnum" id="telnum">
-				<input type="text" id="phone1"> - <input type="text"
-					id="phone2"> - <input type="text" id="phone3">
+					<input type="text" id="phone1"> - <input type="text"
+						id="phone2"> - <input type="text" id="phone3">
 				</div>
 			</div>
 
@@ -99,6 +99,16 @@ if ((agree == null || !agree.equals("Y")) || method.equals("GET")) {
 		</form>
 	</div>
 	<script>
+		function chkName(t) {
+			var nameCheck = /^[가-힣]{2,6}$/;
+			if (!nameCheck.test(t)) {
+				return false;
+			}
+			return true;
+		}
+		
+		
+
 		$(document).ready(function() {
 			$("button[type=submit]").on("click", function() {
 				var p1 = $("#phone1").val();
@@ -110,12 +120,21 @@ if ((agree == null || !agree.equals("Y")) || method.equals("GET")) {
 				console.log("휴대폰 번호가 작성되었습니다.");
 				return true;
 			});
+			
 
 			$("button").click(function() {
 
 				/* 이름 */
 				if ($("#uname").val() == '') {
 					alert("이름을 입력해주세요.");
+					$('#uname').focus();
+					return false;
+				}
+				if (!chkName($('#uname').val())) {
+					console.log("잘못됨" + $('#uname').val());
+					alert("올바른 형식의 이름을 입력하세요");
+					$('#uname').val('');
+					$('#uname').focus();
 					return false;
 				}
 
