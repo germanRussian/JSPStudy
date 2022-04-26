@@ -15,7 +15,7 @@ String user = "root";
 String password = "smart";
 
 StringBuffer sql = new StringBuffer();
-sql.append(" SELECT uid, uname, schoolname FROM g_member");
+sql.append(" SELECT uid,uname   FROM g_member");/*  */
 sql.append(" where uid = ? AND upw = ? ");
 
 Connection conn = null;
@@ -37,11 +37,12 @@ try {
 	// 출력
 	rs = stmt.executeQuery();
 
-	/* 정보가 있으면 세션 만들어주라 - list 메소드 활용*/
+	/* 양이 적은 정보가 있으면 세션 만들어주라 - list 메소드 활용*/
 	if (rs.next()) {
 		session.setAttribute("sessId", rs.getString("uid"));
-		session.setAttribute("sessName", rs.getString("uname"));
-		session.setAttribute("sessSchoolName", rs.getString("schoolname"));
+		session.setAttribute("sessName", rs.getString("uname")); 
+		
+		
 		loginSuccess = true;
 	}
 
