@@ -151,7 +151,7 @@ var lon;//경도
 			승하차 체크하기<img src="./img/ico_arrow.png" class="fR">
 		</a>
 		<div class="mb16">
-			<img src="./img/img02.png">잔여 이용 횟수 <span class="fR"><b>4</b>회</span>
+			<img src="./img/img02.png">잔여 이용 횟수 <span class="fR"><b id="txtHint"></b>회</span>
 		</div>
 		<a href="map.jsp" class="mb16" id="map"> <img src="./img/img03.png">실시간
 			버스 위치<img src="./img/ico_arrow2.png" class="fR">
@@ -177,5 +177,25 @@ var lon;//경도
 				<p>이용내역</p></a></li>
 		</ul>
 	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript">
+	
+	//ajax를 사용
+		setTimeout(function coupon() {
+			
+			
+					const xmlhttp = new XMLHttpRequest();
+					xmlhttp.onload = function() {
+						document.getElementById("txtHint").innerHTML = this.responseText;
+					}
+					
+					xmlhttp.open("GET", "getCoupon.jsp");
+					xmlhttp.send();
+					
+					
+					setTimeout(coupon, 1000);//반복 시간
+				}, 0);//시작 시간
+	</script>
 </body>
 </html>

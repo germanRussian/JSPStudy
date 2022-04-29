@@ -19,27 +19,24 @@ String url = "jdbc:mysql://localhost:3306/garam?characterEncoding=UTF-8&serverTi
 String user = "root";
 String password = "smart";
 
-
 StringBuffer sql = new StringBuffer();
 sql.append(" SELECT *  FROM g_member");
 sql.append(" where uid = ? ");
-
 
 Connection conn = null;
 PreparedStatement stmt = null;
 ResultSet rs = null;
 
-
-String name =""; 
+String name = "";
 String schoolName = "";
 String phone = "";
 String gradeClass = "";
+String upw1 = "";
 String route = "";
 String boardingPlace = "";
 
 
-
-
+/* DB정보를 가져와서 화면에 출력*/
 try {
 	//드라이버로드
 	Class.forName("com.mysql.cj.jdbc.Driver");
@@ -48,17 +45,18 @@ try {
 	//SQL
 	stmt = conn.prepareStatement(sql.toString());
 	//값 설정(쿼리 문 '?'에 들어 갈 값)
-	stmt.setString(1,(String)session.getAttribute("sessId"));
+	stmt.setString(1, (String) session.getAttribute("sessId"));
 	// 출력
 	rs = stmt.executeQuery();
 
 	/* 한건에 해당하는 것만 내용을 가져올 것이기 때문에 if문 사용 while문은 여러건을 가져올때.*/
 	if (rs.next()) {
-		
-		 name = rs.getString("uname");
+
+		name = rs.getString("uname");
 		schoolName = rs.getString("schoolname");
 		phone = rs.getString("uid");
 		gradeClass = rs.getString("gradeclass");
+		upw1 = rs.getString("upw");
 		route = rs.getString("route");
 		boardingPlace = rs.getString("boardingplace");
 	}
@@ -67,13 +65,14 @@ try {
 
 } finally {
 	//닫기
-	if (rs != null) rs.close();
-	if (stmt != null) stmt.close();
-	if (conn != null) conn.close();
+	if (rs != null)
+		rs.close();
+	if (stmt != null)
+		stmt.close();
+	if (conn != null)
+		conn.close();
 
 }
-
-
 %>
 
 
@@ -99,7 +98,8 @@ try {
 
 	<div class="pd16">
 		<form method="post" action="mymodiAct.jsp">
-			<input type="hidden" name="uid" id="uid" value="<%= session.getAttribute("sessId") %>"> <br> <br>
+			<input type="hidden" name="uid" id="uid"
+				value="<%=session.getAttribute("sessId")%>"> <br> <br>
 			<div>
 				<h4>이름</h4>
 				<input type="text" name="uname" id="uname" value="<%=name%>">
@@ -107,23 +107,38 @@ try {
 			<br>
 			<div>
 				<h4>학교</h4>
-				<input type="text" name="schoolname" id="uschool"value="<%=schoolName%>">
+				<input type="text" name="schoolname" id="uschool"
+					value="<%=schoolName%>">
 			</div>
 			<br>
 			<div>
 				<h4>학년/반</h4>
-				<input type="text" name="gradeclass" id="ugrade"value="<%=gradeClass%>">
+				<input type="text" name="gradeclass" id="ugrade"
+					value="<%=gradeClass%>">
 			</div>
-
-
+			<br>
+			<div>
+				<h4 class="inline">휴대폰 번호</h4>
+				<span>(※ 확인만 가능합니다. 휴대폰 번호 변경시, 재가입 필요.)</span>
+				<input type="text" name="uid" id="uid" value="<%=phone%>" readonly="readonly">
+			</div>
+			<br>
+			<div>
+				<h4 class="inline"> 비밀번호 수정 및 확인</h4>
+				<span>(※최대 12자리)</span> <input type="text" name="upw"
+					maxlength='12' id="upw" value=""> 
+			</div>
 			<br>
 			<div>
 				<h4>노선</h4>
 				<div class="sltbox">
 					<select name="route" id="busroot">
-						<option value="A노선" <%="A노선".equals(route)? "selected A": "none" %>>A노선</option>
-						<option value="B노선" <%="B노선".equals(route)? "selected B": "none" %>>B노선</option>
-						<option value="C노선" <%="C노선".equals(route)? "selected C": "none" %>>C노선</option>
+						<option value="A노선"
+							<%="A노선".equals(route) ? "selected A" : "none"%>> A노선 </option>
+						<option value="B노선"
+							<%="B노선".equals(route) ? "selected B" : "none"%>> B노선 </option>
+						<option value="C노선"
+							<%="C노선".equals(route) ? "selected C" : "none"%>> C노선 </option>
 					</select>
 				</div>
 			</div>
@@ -133,9 +148,10 @@ try {
 				<span>(※노선을 먼저 선택해주세요)</span>
 				<div class="sltbox">
 					<select name="boardingplace" id="place">
-						<option value="A장소">A장소</option>
-						<option value="B장소">B장소</option>
-						<option value="C장소">C장소</option>
+					<!-- 3항 연산자를 사용하여, 데이터에 저장된 값과 value 값을 비교하여 참이면, 내정보수정 페이지에 해당 정보를 뿌려줌. -->
+						<option value="A장소" <%="A장소".equals(boardingPlace) ? "selected A" : "none" %>> A장소 </option>
+						<option value="B장소" <%="B장소".equals(boardingPlace) ? "selected B" : "none" %>> B장소 </option>
+	                    <option value="C장소" <%="C장소".equals(boardingPlace) ? "selected C" : "none" %>> C장소 </option>
 					</select>
 				</div>
 			</div>
@@ -186,6 +202,12 @@ try {
 				/* 학년/반 */
 				if ($("#ugrade").val() == '') {
 					alert("학년 / 반을 확인해주세요.");
+					return false;
+				}
+				
+				/* 비밀번호 수정 및 확인 */
+				if($("#upw").val() ==''){
+					alert("비밀번호 수정 또는 재입력해주세요.");
 					return false;
 				}
 

@@ -39,7 +39,7 @@ String user = "root";
 String password = "smart";
 StringBuffer sql = new StringBuffer();
 sql.append(" INSERT INTO g_member (uname, schoolname, gradeclass, uid, upw, route, boardingplace, joindate)");
-sql.append(" VALUES (?, ?, ?, ?, ?, ?, ?, now()) ");
+sql.append(" VALUES (?, ?, ?, ?, sha1(?), ?, ?, now()) ");//
 
 
 

@@ -21,10 +21,11 @@ request는 한페이지 밖에 못 던진다.
 request.setCharacterEncoding("UTF-8");//데이터 한글 깨짐 방지
 
 String uid = request.getParameter("uid");
+
 String uname = request.getParameter("uname");
 String schoolname = request.getParameter("schoolname");
 String gradeclass = request.getParameter("gradeclass");
-/* String upw = request.getParameter("upw"); */
+String upw = request.getParameter("upw");
 String route = request.getParameter("route");
 String boardingplace = request.getParameter("boardingplace");
 
@@ -35,7 +36,7 @@ String url = "jdbc:mysql://localhost:3306/garam?characterEncoding=UTF-8&serverTi
 String user = "root";
 String password = "smart";
 StringBuffer sql = new StringBuffer();
-sql.append(" UPDATE g_member SET uname =?, schoolname =?, gradeclass =?, route =?, boardingplace =? ");
+sql.append(" UPDATE g_member SET uname =?, schoolname =?, gradeclass =?, upw= sha1(?), route =?, boardingplace =? ");
 sql.append(" where uid =? ");
 
 
@@ -55,9 +56,10 @@ try {
 	stmt.setString(1, uname);
 	stmt.setString(2, schoolname);
 	stmt.setString(3, gradeclass);
-	stmt.setString(4, route);
-	stmt.setString(5, boardingplace);
-	stmt.setString(6, uid);
+	stmt.setString(4, upw);
+	stmt.setString(5, route);
+	stmt.setString(6, boardingplace);
+	stmt.setString(7, uid);
 
 	// 출력
 	res = stmt.executeUpdate();

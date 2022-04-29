@@ -1,6 +1,70 @@
 
+<%@page import="java.sql.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+request.setCharacterEncoding("utf-8");
+String uid = request.getParameter("uid");
+String upw = request.getParameter("upw");
+
+String url = "jdbc:mysql://localhost:3306/garam?characterEncoding=UTF-8&serverTimezone=Asia/Seoul";
+String user = "root";
+String password = "smart";
+
+
+StringBuffer sql = new StringBuffer();
+sql.append(" SELECT *  FROM g_member");
+sql.append(" where uid = ? ");
+
+
+Connection conn = null;
+PreparedStatement stmt = null;
+ResultSet rs = null;
+
+
+
+String schoolName = "";
+
+
+
+
+
+
+try {
+	//드라이버로드
+	Class.forName("com.mysql.cj.jdbc.Driver");
+	//연결
+	conn = DriverManager.getConnection(url, user, password);
+	//SQL
+	stmt = conn.prepareStatement(sql.toString());
+	//값 설정(쿼리 문 '?'에 들어 갈 값)
+	stmt.setString(1,(String)session.getAttribute("sessId"));
+	// 출력
+	rs = stmt.executeQuery();
+
+	/* 한건에 해당하는 것만 내용을 가져올 것이기 때문에 if문 사용 while문은 여러건을 가져올때.*/
+	if (rs.next()) {
+		 
+		schoolName = rs.getString("schoolname");
+		
+		
+	
+	}
+} catch (Exception e) {
+	e.getLocalizedMessage();
+
+} finally {
+	//닫기
+	if (rs != null) rs.close();
+	if (stmt != null) stmt.close();
+	if (conn != null) conn.close();
+
+}
+
+
+
+
+%>
 
 
 <!DOCTYPE html>
@@ -41,7 +105,7 @@
 			</div>
 
 			<div class=" select">
-				<img src="./img/img04.png">도착지 <span class="fR">포항고등학교</span>
+				<img src="./img/img04.png">도착지 <span class="fR"><%= schoolName%></span>
 				<!--등교 도착지는 학교로 고정-->
 			</div>
 
@@ -51,7 +115,7 @@
 
 		<div id="goHome">
 			<div class="mb16 select">
-				<img src="./img/img04.png">출발지 <span class="fR">포항고등학교</span>
+				<img src="./img/img04.png">출발지 <span class="fR"><%= schoolName%></span>
 			</div>
 
 			<div class=" select">
@@ -72,6 +136,7 @@
 	</div>
 	<button class="mX mt40" onclick="location.href='qrcode.jsp'">QR
 		Code 실행</button>
+		
 
 
 	<div class="FAB">

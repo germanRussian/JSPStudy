@@ -7,6 +7,8 @@
 
 <%
 request.setCharacterEncoding("utf-8");
+
+
 String uid = request.getParameter("uid");
 String upw = request.getParameter("upw");
 
@@ -15,8 +17,9 @@ String user = "root";
 String password = "smart";
 
 StringBuffer sql = new StringBuffer();
-sql.append(" SELECT uid,uname   FROM g_member");/*  */
-sql.append(" where uid = ? AND upw = ? ");
+sql.append(" SELECT uid, uname   FROM g_member");
+sql.append(" where uid = ? AND upw = sha1(?) ");
+
 
 Connection conn = null;
 PreparedStatement stmt = null;
